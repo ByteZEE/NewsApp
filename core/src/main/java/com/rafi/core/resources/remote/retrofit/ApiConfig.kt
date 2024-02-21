@@ -1,7 +1,7 @@
 package com.rafi.core.resources.remote.retrofit
 
 import android.content.Context
-import com.rafi.core.util.Constant
+import com.rafi.core.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,7 +13,7 @@ class ApiConfig @Inject constructor(
     private val apiService: ApiService by lazy {
         val okHttpClient = OkHttpClient.Builder().build()
 
-        val retrofit = Retrofit.Builder().baseUrl(Constant.Remote.BASE_URL)
+        val retrofit = Retrofit.Builder().baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build()
 
         val apiService = retrofit.create(ApiService::class.java)

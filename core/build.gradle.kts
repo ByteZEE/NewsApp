@@ -3,7 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
-    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
 
@@ -16,6 +15,19 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        val baseUrl: String =
+            com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(
+                rootDir
+            ).getProperty("BASE_URL")
+
+        val apiKey: String =
+            com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(
+                rootDir
+            ).getProperty("API_KEY")
+
+        buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
     }
 
     buildTypes {
@@ -33,6 +45,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 
@@ -53,7 +68,6 @@ dependencies {
 
     // Room Database
     implementation("androidx.room:room-runtime:2.6.0")
-    ksp ("androidx.room:room-compiler:2.6.0")
     implementation("androidx.room:room-rxjava2:2.6.0")
     implementation("androidx.room:room-ktx:2.6.0")
 

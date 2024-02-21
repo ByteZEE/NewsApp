@@ -1,10 +1,12 @@
 package com.rafi.core.util
 
+import com.rafi.core.BuildConfig
+
 object Constant {
 
     object Remote {
-        const val BASE_URL = "https://newsapi.org/"
-        const val API_KEY = "2e6d335a0e1c48049abb644ba9325813"
+        const val BASE_URL = BuildConfig.BASE_URL
+        const val API_KEY = BuildConfig.API_KEY
     }
 
     object News {
