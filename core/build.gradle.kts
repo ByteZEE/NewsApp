@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -78,6 +79,10 @@ dependencies {
     // Coroutine Lifecycle Scopes
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation ("androidx.activity:activity-ktx:1.6.1") //by viewModels()
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1") //asLiveData
 
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
@@ -87,4 +92,7 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
+
+    // Paging
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
 }

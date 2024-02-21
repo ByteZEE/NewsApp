@@ -13,4 +13,8 @@ object Constant {
         const val SEARCH_NEWS_TIME_DELAY = "500L"
         const val QUERY_PAGE_SIZE = "20"
     }
+
+    object Room {
+        const val DATABASE_NAME = "app_room_database"
+    }
 }
